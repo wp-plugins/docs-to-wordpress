@@ -3,7 +3,7 @@
 Plugin Name: Docs to WordPress extender - clean content, strip comments
 Author: William P. Davis, Bangor Daily News
 Author URI: http://wpdavis.com/
-Version: 0.4-beta
+Version: 1.0-beta
 */
 $dtwp_comments = array();
 
