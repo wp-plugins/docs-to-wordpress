@@ -14,7 +14,7 @@ class Docs_To_WP {
 	private $fromFolder;
 	private $toFolder;
 
-	public function Docs_To_WP( $username, $password ) {
+	public function __construct( $username, $password ) {
 		
 		//add admin page
 		//register wp cron
@@ -24,7 +24,6 @@ class Docs_To_WP {
 		do_action( 'docs_to_wp_init' );
 	
 	}
-
 	
 	public function purifierInit( ) {
 	
