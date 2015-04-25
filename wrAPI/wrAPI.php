@@ -3,7 +3,7 @@
 require_once( dirname( __FILE__ ).'/apis/Api_Interface.php' );
 require_once( dirname( __FILE__ ).'/apis/Abstract_Api.php' );
 
-spl_autoload_register(function( $class ) {
+function wrAPI_autoload( $class ) {
 
 	if( strpos( $class, 'Exception' ) === false )
 		return false;
@@ -17,7 +17,15 @@ spl_autoload_register(function( $class ) {
 
 	require_once( dirname( __FILE__ ).'/exceptions/'.$class.'.php' );
 
-});
+};
+
+spl_autoload_register('wrAPI_autoload');
+
+function wrAPI_array_map( $a ){
+
+	return preg_replace( '/[^a-zA-Z0-9]/', null, $a );
+
+}
 
 class wrAPI {
 	
@@ -28,9 +36,7 @@ class wrAPI {
 
 		$name = explode( '_', $api_name );
 
-		$name = array_map( function($a) {
-			return preg_replace( '/[^a-zA-Z0-9]/', null, $a );
-		}, $name);
+		$name = array_map( 'wrAPI_array_map', $name);
 
 		if( count( $name ) > 1 ){
 			$filename = implode('/', $name);
